@@ -9,5 +9,10 @@ import java.util.List;
  */
 public interface DataProvider<ModelT extends Model> {
 
+  /**
+   * Retrieve data from a datasource.
+   *
+   * @return {@link List} of {@link Model}.
+   */
   public List<ModelT> getData();
 }

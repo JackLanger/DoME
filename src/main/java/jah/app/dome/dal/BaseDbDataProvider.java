@@ -4,12 +4,17 @@ import jah.app.dome.models.Model;
 
 import java.util.List;
 
-public abstract class DbDataProvider<ModelT extends Model> implements DataProvider<ModelT>,DataBaseConnector<ModelT> {
+/**
+ * {@link BaseDbDataProvider} Singleton class for DataBase Access with CRUD functionality.
+ *
+ * @param <ModelT> {@link Model} to be written and or read
+ */
+public abstract class BaseDbDataProvider<ModelT extends Model> implements DataProvider<ModelT>,DataBaseConnector<ModelT> {
 
   /**
    * Protected constructor
    */
-  protected DbDataProvider(){
+  protected BaseDbDataProvider(){
 
     //empty constructor
   }
