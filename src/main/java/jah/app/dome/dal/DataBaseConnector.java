@@ -4,6 +4,10 @@ import jah.app.dome.models.Model;
 
 import java.util.List;
 
+/**
+ * {@link DataBaseConnector} provides CRUD functionality to a database data layer.
+ * @param <ModelT>
+ */
 public interface DataBaseConnector<ModelT extends Model> {
   /**
    * Connect to the database.
