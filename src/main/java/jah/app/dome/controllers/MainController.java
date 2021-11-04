@@ -1,5 +1,6 @@
 package jah.app.dome.controllers;
 
+import jah.app.dome.dal.DataProvider;
 import jah.app.dome.routing.RoutesUtil;
 import jah.app.dome.routing.Views;
 import org.springframework.stereotype.Controller;
@@ -11,12 +12,14 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class MainController {
-
   /**
    * {@link ModelAndView}.
    */
 
   private final transient ModelAndView mav;
+  /**
+   * {@link DataProvider} for communicating with the datasource.
+   */
 
   /**
    * Create a new controller and set Model and view to a new {@link ModelAndView}.
