@@ -1,0 +1,130 @@
+plugins {
+    // https://github.com/spring-projects/spring-boot
+    id 'org.springframework.boot' version '2.5.6'
+    // https://github.com/spring-gradle-plugins/dependency-management-plugin
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'pmd'
+    id 'checkstyle'
+    id 'jacoco'
+}
+
+group 'jah.app'
+version '0.1.0-prebuild'
+
+// https://pmd.github.io/
+def pmdVersion = '6.39.0'
+// Replace the file from config/google_checks.xml with the file from https://github.com/checkstyle/checkstyle/releases in the folder src/main/resources/google_checks.xml
+def checkstyleVersion = '9.0.1'
+// https://www.eclemma.org/jacoco/
+def jacocoVersion = '0.8.7'
+
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    testImplementation 'junit:junit:4.13.2'
+    // https://mvnrepository.com/artifact/org.thymeleaf/thymeleaf-spring5
+    implementation 'org.thymeleaf:thymeleaf-spring5:3.0.12.RELEASE'
+    // https://mvnrepository.com/artifact/org.thymeleaf/thymeleaf
+    implementation 'org.thymeleaf:thymeleaf:3.0.12.RELEASE'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter
+    implementation 'org.springframework.boot:spring-boot-starter:2.5.6'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-configuration-processor
+    implementation 'org.springframework.boot:spring-boot-configuration-processor:2.5.6'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.5.6'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-autoconfigure
+    // implementation 'org.springframework.boot:spring-boot-autoconfigure:2.5.6'
+    // https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
+    implementation 'org.xerial:sqlite-jdbc:3.36.0.3'
+}
+
+jacoco {
+    toolVersion = jacocoVersion
+}
+
+test {
+    useJUnitPlatform()
+}
+
+project.jacocoTestReport {
+    getExecutionData().setFrom(fileTree(buildDir).include("/jacoco/*.exec"))
+    // getExecutionData().from(fileTree(project.projectDir).include("/jacoco/*.exec"))
+
+    reports {
+        csv.enabled true
+        xml.required = true
+    }
+}
+
+springBoot {
+    buildInfo()
+}
+
+// Checkstyle - https://github.com/checkstyle/checkstyle
+checkstyle {
+    // Config is downloaded from https://github.com/checkstyle/checkstyle/releases
+    // It's in the folder src/main/resources/google_checks.xml
+    configFile = file('config/checkstyle/google_checks.xml')
+    toolVersion = checkstyleVersion
+    ignoreFailures = false
+    maxWarnings = 0
+}
+
+// PMD
+pmd {
+    toolVersion = pmdVersion
+    ruleSetFiles = files("config/pmd/pmd.xml")
+    // ruleSets variable needs to be emptied or else the gradle plugin will use the basic ruleset
+    // and some rules cannot be excluded.
+    ruleSets = []
+    ignoreFailures = false
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs << '-Xlint:unchecked'
+    options.deprecation = true
+}
+tasks.withType(Test) {
+    finalizedBy jacocoTestReport
+}
+// Javadoc
+tasks.withType(Javadoc) {
+    failOnError true
+    configure(options) {
+        tags(
+                'todo:X"',
+                'apiNote:a:"API Note:"',
+                'implSpec:a:"Implementation Requirements:"',
+                'implNote:a:"Implementation Note:"'
+        )
+    }
+
+    // Fail on javadoc warnings
+    def capturedOutput = []
+    def listener = { capturedOutput << it } as StandardOutputListener
+    doFirst {
+        logging.addStandardErrorListener(listener)
+        logging.addStandardOutputListener(listener)
+    }
+    doLast {
+        logging.removeStandardOutputListener(listener)
+        logging.removeStandardErrorListener(listener)
+        capturedOutput.each { e ->
+            if (e.toString() =~ " warning: ") {
+                throw new GradleException("You have some javadoc warnings, please fix them!")
+            }
+        }
+    }
+}
