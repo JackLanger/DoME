@@ -1,5 +1,6 @@
 package jah.app.dome.controllers;
 
+import jah.app.dome.dal.DataBaseConnector;
 import jah.app.dome.models.LinkModel;
 import jah.app.dome.models.TaskModel;
 import jah.app.dome.routing.RoutesUtils;
@@ -19,8 +20,8 @@ public class MainController {
   /**
    * {@link ModelAndView}.
    */
-
   private final transient ModelAndView mav;
+
   /**
    * {@link List} to hold links.
    */
@@ -61,11 +62,13 @@ public class MainController {
   public ModelAndView tasks() {
 
     final List<TaskModel> tasks = new ArrayList<>();
+    final DataBaseConnector<TaskModel> dataBaseConnector;
 
     mav.clear();
     mav.setViewName("Tasks");
     mav.addObject("links", links);
     mav.addObject("tasks", tasks);
+
 
     return mav;
   }
