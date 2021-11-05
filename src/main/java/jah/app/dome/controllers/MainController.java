@@ -26,7 +26,6 @@ public class MainController {
    */
   final List<LinkModel> links = new ArrayList<>();
 
-
   /**
    * Create a new controller and set Model and view to a new {@link ModelAndView}.
    */
