@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"jah.app.dome"},{"l":"jah.app.dome.controllers"},{"l":"jah.app.dome.routing"}];updateSearchResults();

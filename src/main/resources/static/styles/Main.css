@@ -1,0 +1,111 @@
+:root {
+    --blue-light: #717DD4;
+    --blue-regular: #374BE5;
+    --blue-dark: #2F4073;
+    --blue-very-dark: #0A0D20;
+    --blue-black: #0C0D13;
+    --red-dark: #AA4B39;
+    --red-regular: #FF421F;
+    --red-light: #FF8B76;
+    --yellow-dark: #AA8639;
+    --yellow-regular: #FFC11F;
+    --yellow-light: #FFD476;
+    --green-dark: #2A7C46;
+    --green-regular: #1DE862;
+    --green-light: #65DA8D;
+    --dark-gray: #1a1a1b;
+    --regular-gray: #2a2b2c;
+}
+
+body {
+    font-family: Charter, serif;
+    font-size: 1.1em;
+    line-height: 1.2;
+    margin: 0;
+    padding: 0;
+    display: inline-grid;
+    grid-template-columns: 15% 65% 25%;
+    max-height: 100vh;
+    overflow: -moz-hidden-unscrollable;
+}
+
+.navbar {
+    grid-column: 1;
+    background: var(--dark-gray);
+    color: white;
+    display: block;
+    border-right: solid 1px #151515;
+    box-sizing: border-box;
+    box-shadow: 3px 0 8px rgba(15, 15, 15, 0.35);
+}
+
+.nav-list {
+    list-style: none;
+    background: green;
+    padding: 0;
+}
+
+.nav-list > li {
+    float: left;
+    width: 100%;
+}
+
+.nav-link {
+    text-decoration: none;
+    padding: 1em;
+    margin: 0;
+    display: block;
+    color: white;
+}
+
+.nav-link:hover {
+    background: white;
+    color: var(--regular-gray);
+}
+
+.content {
+    grid-column: 2;
+    overflow: scroll;
+    height: calc(100vh - 10rem);
+    padding: 5rem;
+    width: 100%;
+    scrollbar-width: none;
+}
+
+.content > * {
+    max-width: 85ch;
+    padding: 3rem;
+    margin: auto;
+}
+
+.right {
+    grid-column: 3;
+    max-width: 15%;
+    text-align: justify;
+    padding: 2em;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+
+h1 {
+    font-family: "FrontPage Pro", Arial, sans-serif;
+}
+
+.footnote {
+    background: white;
+}
+
+.disclaimer {
+    padding: 2rem;
+    margin: auto;
+    max-width: 30ch;
+    font-size: 12px;
+}
+
+.task {
+    padding: 1rem;
+    background: lightgray;
+    box-shadow: 0 0 0 1px gray;
+}

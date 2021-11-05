@@ -1,7 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head th:replace="fragments/head :: head">
-<body>
 
+    <link rel="stylesheet" href="../../static/styles/Main.css">
+</head>
+<body>
+<div class="navbar" th:replace="fragments/navbar :: navbar">
+    <ul class="nav-list">
+        <li>
+            <a class="nav-link" href="#">some link</a>
+        </li>
+    </ul>
+</div>
+<div class="content" th:replace="fragments/contents/indexContent :: indexContent">
+    <h1>welcome</h1>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad consequuntur deserunt error, labore natus nobis
+        quae quisquam! Cum, et, labore. Consectetur error magni rem repellat. Aliquid consectetur culpa cum debitis
+        dolores doloribus ea eum excepturi explicabo facere minus mollitia nesciunt nihil omnis quo reprehenderit rerum
+        sit, temporibus unde velit voluptas.
+    </p>
+</div>
+<div class="right"></div>
 </body>
 </html>

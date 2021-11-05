@@ -4,6 +4,11 @@
 </file>
 <file name="C:\Users\langer\Desktop\Projects\Java\DoME\src\main\java\jah\app\dome\controllers\MainController.java">
 </file>
+<file name="C:\Users\langer\Desktop\Projects\Java\DoME\src\main\java\jah\app\dome\dal\DBAccess.java">
+<error line="6" column="14" severity="warning" message="Die Abkürzung im Bezeichner &apos;DBAccess&apos; darf höchstens aus &apos;1&apos; Großbuchstaben bestehen." source="com.puppycrawl.tools.checkstyle.checks.naming.AbbreviationAsWordInNameCheck"/>
+</file>
+<file name="C:\Users\langer\Desktop\Projects\Java\DoME\src\main\java\jah\app\dome\models\TaskModel.java">
+</file>
 <file name="C:\Users\langer\Desktop\Projects\Java\DoME\src\main\java\jah\app\dome\routing\RoutesUtil.java">
 </file>
 <file name="C:\Users\langer\Desktop\Projects\Java\DoME\src\main\java\jah\app\dome\routing\Views.java">

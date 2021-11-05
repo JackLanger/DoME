@@ -1,0 +1,8 @@
+<div class="content" th:fragment="tasks">
+
+    <div class="tasks" th:each="task : ${tasks}">
+        <div class="task"></div>
+    </div>
+
+    <div class="footnote" th:replace="fragments/footer :: foot"></div>
+</div>

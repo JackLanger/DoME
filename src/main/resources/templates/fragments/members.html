@@ -1,0 +1,11 @@
+<div class="right" th:fragment="members">
+    <div th:replace="fragments/contents/memberContent :: memberInfo"></div>
+    <div class="member-container">
+
+        <ul class="members" th:each="member : ${members}">
+            <li class="member">
+                <a href="" th:text="${member.name}"></a>
+            </li>
+        </ul>
+    </div>
+</div>

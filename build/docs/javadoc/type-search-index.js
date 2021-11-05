@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"jah.app.dome","l":"DomeApplication"},{"p":"jah.app.dome.controllers","l":"MainController"},{"p":"jah.app.dome.routing","l":"RoutesUtil"},{"p":"jah.app.dome.routing","l":"Views"}];updateSearchResults();

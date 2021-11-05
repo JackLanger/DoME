@@ -1,0 +1,7 @@
+<div class="navbar" th:fragment="navbar">
+    <ul class="nav-list" th:each="link : ${links}">
+        <li>
+            <a class="nav-link" href="#" th:href="${link.uri}" th:text="${link.name}">some link</a>
+        </li>
+    </ul>
+</div>
