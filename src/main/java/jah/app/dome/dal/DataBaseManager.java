@@ -5,7 +5,7 @@ import jah.app.dome.models.Model;
 /**
  * {@link DataBaseManager} Manager class to create database connectors.
  */
-public abstract class DataBaseManager implements ConnectorFactory {
+public abstract class DataBaseManager {
 
 
   /**
@@ -28,7 +28,7 @@ public abstract class DataBaseManager implements ConnectorFactory {
    */
   protected DataBaseManager() {
     //empty constructor
-    //TODO: set tableName according to the ModelT that is beeing used
+    //TODO: set tableName according to the ModelT that is being used
 
   }
 
